@@ -3,8 +3,6 @@
 
 version: 2
 
-project_name:
-
 before:
   hooks:
     - go mod download
@@ -81,9 +79,6 @@ changelog:
 dist: .goreleaser-dist
 
 release:
-  github:
-    owner: "meysam81"
-    name: "{{ .ProjectName }}"
   draft: false
   prerelease: auto
   header: |
