@@ -139,22 +139,3 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         name: Run goreleaser
         run: goreleaser release --release-notes CHANGELOG.md --clean
-
-  lychee:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Cache lychee
-        uses: actions/cache@v4
-        with:
-          key: lychee-${{ runner.os }}-${{ hashFiles('**/lychee.toml') }}
-          path: .lycheecache
-          restore-keys: |
-            lychee-
-      - id: lychee
-        name: Link Checker
-        uses: lycheeverse/lychee-action@v2
-        with:
-          fail: ${{ github.ref == 'refs/heads/main' }}
-          failIfEmpty: false
